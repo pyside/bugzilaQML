@@ -56,7 +56,7 @@ class Bugzilla (QAbstractListModel):
                 continue
             fields = line.split(',', 8)
 
-            fields = map(lambda (x) : x[1:-1] if x.startswith('"') else x, fields)
+            fields = map(lambda (x) : x.strip()[1:-1] if x.startswith('"') else x, fields)
             fields = map(lambda (x) : x.replace('""', '"'), fields)
             self._bugs.append(fields)
 

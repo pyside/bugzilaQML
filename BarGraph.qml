@@ -56,7 +56,7 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 43
+        anchors.bottomMargin: 35
         height: 2
     }
 

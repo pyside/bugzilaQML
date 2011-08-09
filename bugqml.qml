@@ -5,6 +5,11 @@ Item {
     width: 1214
     height: 975
 
+    FontLoader {
+        id: fontGiz
+        source: "./EraserRegular.ttf"
+    }
+
     BorderImage {
         id: board
         anchors.top: parent.top
@@ -20,7 +25,7 @@ Item {
             Text {
                 id: title
                 anchors.horizontalCenter: graph.horizontalCenter
-                font.family: "purisa"
+                font.family: fontGiz.name
                 font.pointSize: 28
                 color: "white"
                 text: "<b>PySide</b> Bugzilla report"
@@ -40,7 +45,7 @@ Item {
             width:280
             anchors.right: parent.right
             Text {
-                font.family: "purisa"
+                font.family: fontGiz.name
                 font.pointSize: 24
                 font.underline: true
                 color: "white"
@@ -51,20 +56,20 @@ Item {
                 height: 30
             }
             Text {
-                font.family: "purisa"
-                font.pointSize: 16
+                font.family: fontGiz.name
+                font.pointSize: 14
                 color: "orangered"
                 text: "<b>Unconfirmed Bugs:</b> " + bugmodel.unconfirmedBugs
             }
             Text {
-                font.family: "purisa"
-                font.pointSize: 16
+                font.family: fontGiz.name
+                font.pointSize: 14
                 color: "steelblue"
                 text: "<b>Openend Bugs:</b> " + bugmodel.openedBugs
             }
             Text {
-                font.family: "purisa"
-                font.pointSize: 16
+                font.family: fontGiz.name
+                font.pointSize: 14
                 color: "olivedrab"
                 text: "<b>Fixed Bugs:</b> " + bugmodel.fixedBugs
             }

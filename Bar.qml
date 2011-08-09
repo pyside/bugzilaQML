@@ -12,7 +12,7 @@ Column {
         anchors.left: parent.left
         anchors.right: parent.right
         horizontalAlignment: Text.AlignHCenter
-        font.family: "purisa"
+        font.family: fontGiz.name
         font.weight: Font.DemiBold
 
         color: Qt.hsla(0.1 * index, 1.0, 0.5, 1.0)
@@ -30,7 +30,7 @@ Column {
         anchors.left: parent.left
         anchors.right: parent.right
         horizontalAlignment: Text.AlignHCenter
-        font.family: "purisa"
+        font.family: fontGiz.name
         font.weight: Font.DemiBold
         color: "white"
         text: dataTitle

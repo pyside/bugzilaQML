@@ -28,7 +28,7 @@ Item {
                     color: "#1c1c1c"
                     font.bold: true
                     font.pointSize: 18
-                    font.family: "purisa"
+                    font.family: fontGiz.name
                 }
             }
             Text {
@@ -41,7 +41,7 @@ Item {
 
                 verticalAlignment: Text.AlignVCenter
                 color: "white"
-                font.family: "purisa"
+                font.family: fontGiz.name
 
                 font.pointSize: 18
             }
@@ -51,19 +51,22 @@ Item {
             Text {
                 id: txtStatus
                 color: "white"
-                font.family: "purisa"
+                font.family: fontGiz.name
+                font.pointSize: 14
                 text: "<font color='steelblue'><b>Status: </b></font>" + bugStatus
             }
             Text {
                 id: txtComponent
                 color: "white"
-                font.family: "purisa"
+                font.family: fontGiz.name
+                font.pointSize: 14
                 text: "<font color='steelblue'><b>Component: </b></font>" + bugComponent
             }
             Text {
                 id: txtAssigned
                 color: "white"
-                font.family: "purisa"
+                font.family: fontGiz.name
+                font.pointSize: 14
                 text: "<font color='steelblue'><b>Assigned to: </b></font>" + bugAssigned
             }
         }
@@ -72,7 +75,8 @@ Item {
             anchors.left: parent.left
             anchors.top: bugStatus.bottom
             color: "white"
-            font.family: "purisa"
+            font.family: fontGiz.name
+            font.pointSize: 14
             text: "Thanks for reporting this regression, we are going to fix it ASAP.<br>Regards"
         }
     }

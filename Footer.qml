@@ -1,7 +1,7 @@
 import QtQuick 1.0
 
 Item {
-    property alias model: bugSummary.model
+    property alias model: bugSummaryList.model
     property int currentBug : 0
 
     BorderImage {
@@ -19,7 +19,7 @@ Item {
     BorderImage {
         id: frameCenter
         anchors.top: frameTop.bottom
-        anchors.bottom: frameBottom.top 
+        anchors.bottom: frameBottom.top
         anchors.left: parent.left
         anchors.right: parent.right
         border.left: 35
@@ -29,7 +29,7 @@ Item {
         //fillMode: Image.TileVertically
         smooth: true
         Repeater {
-            id: bugSummary
+            id: bugSummaryList
             BugSummary {
                 opacity: currentBug == index ? 1.0 : 0
                 anchors.fill: parent
@@ -55,10 +55,8 @@ Item {
             interval: 5000; running: true; repeat: true
             onTriggered: {
                 currentBug++
-                if (currentBug >= model.count)
+                if (currentBug >= bugSummaryList.count)
                     currentBug = 0
-
-                console.log("CURRENT BUG:" + currentBug)
             }
         }
     }

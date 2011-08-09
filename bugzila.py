@@ -52,13 +52,14 @@ class Bugzilla (QAbstractListModel):
         self._bugs = []
         while not reply.atEnd():
             line = str(reply.readLine())
+            if line.startswith('bug_id'):
+                continue
             fields = line.split(',', 8)
 
             fields = map(lambda (x) : x[1:-1] if x.startswith('"') else x, fields)
             fields = map(lambda (x) : x.replace('""', '"'), fields)
             self._bugs.append(fields)
 
-            #print fields
             for i in (2, 5, 6):
                 key = fields[i]
                 if key in self._statistics:
@@ -95,19 +96,19 @@ class Bugzilla (QAbstractListModel):
         if role == self.ID:
             return self._bugs[row][0]
         elif role == self.STATUS:
-            return self._bugs[row][4]
+            return self._bugs[row][5]
         elif role == self.PRIORITY:
             return self._bugs[row][2]
         elif role == self.ASSIGNEE:
-            return self._bugs[row][5]
-        elif role == self.SUMARY:
+            if self._bugs[row][5] == 'ASSIGNED':
+                return self._bugs[row][4]
+            return 'nobody'
+        elif role == self.SUMARY or Qt.DisplayRole:
             return self._bugs[row][7]
         elif role == self.COMPONENT:
-            return "Qt" # TODO
+            return 'PySide'
         elif role == self.COMMENTS:
             return "Comments ..."
-        elif Qt.DisplayRole:
-            return self._bugs[row][7]
         return None
 
 def main():

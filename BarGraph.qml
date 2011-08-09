@@ -2,7 +2,7 @@ import QtQuick 1.0
 
 Item {
     id: graph
-    property alias model: listData.model
+    property variant dataModel
     anchors.fill: parent
 
     Item {
@@ -12,20 +12,40 @@ Item {
 
         Row {
             id: canvas
-            property int _maxValue : model.maxValue
+            property int _maxValue : dataModel.maxValue
             anchors.fill: parent
             spacing: 10
             Item {
                 width: 100
                 height: 1
             }
-            Repeater {
-                id: listData
+            Bar {
+               dataTitle: "P1"
+               dataValue: dataModel.p1
+               index: 0
+            }
+            Bar {
+               dataTitle: "P2"
+               dataValue: dataModel.p2
+               index: 1
+            }
 
-                Bar {
-                    dataTitle: title
-                    dataValue: value
-                }
+            Bar {
+               dataTitle: "P3"
+               dataValue: dataModel.p3
+               index: 2
+            }
+
+            Bar {
+               dataTitle: "P4"
+               dataValue: dataModel.p4
+               index: 3
+            }
+
+            Bar {
+               dataTitle: "P5"
+               dataValue: dataModel.p5
+               index: 4
             }
         }
     }

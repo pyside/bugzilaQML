@@ -3,6 +3,7 @@ import QtQuick 1.0
 Column {
     property string dataTitle : 'bar'
     property int dataValue : 0
+    property int index : 0
 
     anchors.bottom: parent.bottom
 
@@ -15,7 +16,7 @@ Column {
         font.weight: Font.DemiBold
 
         color: Qt.hsla(0.1 * index, 1.0, 0.5, 1.0)
-        text: value
+        text: dataValue
     }
 
     Rectangle {

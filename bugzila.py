@@ -12,6 +12,7 @@ class Bugzilla (QAbstractListModel):
     ASSIGNEE = 3
     SUMARY = 4
     COMPONENT = 5
+    COMMENTS = 6
 
     def __init__(self, parent = None):
         QAbstractListModel.__init__(self, parent)
@@ -34,7 +35,8 @@ class Bugzilla (QAbstractListModel):
                            self.PRIORITY : 'BUG_PRIORITY',
                            self.ASSIGNEE : 'BUG_ASSIGNEE',
                            self.SUMARY   : 'BUG_SUMMARY',
-                           self.COMPONENT: 'BUG_COMPONENT'})
+                           self.COMPONENT: 'BUG_COMPONENT',
+                           self.COMMENTS : 'BUG_COMMENTS'})
         self.update()
 
     @Slot()
@@ -102,6 +104,8 @@ class Bugzilla (QAbstractListModel):
             return self._bugs[row][7]
         elif role == self.COMPONENT:
             return "Qt" # TODO
+        elif role == self.COMMENTS:
+            return "Comments ..."
         elif Qt.DisplayRole:
             return self._bugs[row][7]
         return None

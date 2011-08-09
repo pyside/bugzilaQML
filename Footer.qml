@@ -41,9 +41,9 @@ Item {
                 bugID: BUG_ID
                 bugSummary: BUG_SUMMARY
                 bugStatus: BUG_STATUS
-                bugComponent: "NAO TEM"
+                bugComponent: BUG_COMPONENT
                 bugAssigned: BUG_ASSIGNEE
-                bugComments: "Comentario maluco"
+                bugComments: BUG_COMMENTS
 
                 Behavior on opacity {
                     NumberAnimation { duration: 1000 }

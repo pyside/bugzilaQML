@@ -42,6 +42,7 @@ Item {
         }
 
         Column {
+            id: summaryColumn
             width:280
             anchors.right: parent.right
             Text {
@@ -73,10 +74,21 @@ Item {
                 color: "olivedrab"
                 text: "<b>Fixed Bugs:</b> " + bugmodel.fixedBugs
             }
-        }
+       }
+
+       Stamp {
+           width: 250
+           height: 250
+           rotation: -30
+           anchors.right: summaryColumn.right
+           anchors.bottom: parent.bottom
+           timestamp: bugmodel.lastUpdate
+       }
+
     }
 
     Footer {
+        id: footer
         anchors.top: board.bottom
         //anchors.top: parent.top
         anchors.left: parent.left

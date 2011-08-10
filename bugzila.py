@@ -18,6 +18,7 @@ class Bugzilla (QAbstractListModel):
         QAbstractListModel.__init__(self, parent)
         self.manager = QNetworkAccessManager(self)
         self.manager.finished[QNetworkReply].connect(self.replyFinished)
+        self._timeStamp = ""
         self._statistics = {
             'P1' : 0,
             'P2' : 0,
@@ -42,6 +43,7 @@ class Bugzilla (QAbstractListModel):
     @Slot()
     def update(self):
         url = "http://bugs.pyside.org/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=WAITING&bug_status=ASSIGNED&bug_status=REOPENED&bug_status=RESOLVED&bug_status=VERIFIED&product=PySide&query_format=advanced&resolution=---&resolution=FIXED&ctype=csv"
+        self._timeStamp = QDateTime.currentDateTime().toString("h:m:s ap")
         self.manager.get(QNetworkRequest(QUrl(url)))
 
     @Slot(QNetworkReply)
@@ -78,8 +80,12 @@ class Bugzilla (QAbstractListModel):
     def getMaxValue(self):
         return self._maxValue
 
+    def getTimeStamp(self):
+        return self._timeStamp
+
     modelUpdated = Signal()
     maxValue = Property(int, getMaxValue, notify = modelUpdated)
+    lastUpdate = Property(str, getTimeStamp, notify = modelUpdated)
 
     unconfirmedBugs = Property(int, lambda(self) : self._statistics['UNCONFIRMED'], notify = modelUpdated)
     fixedBugs = Property(int, lambda(self) : self._statistics['FIXED'], notify = modelUpdated)

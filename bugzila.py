@@ -120,10 +120,19 @@ class Bugzilla (QAbstractListModel):
             return "Comments ..."
         return None
 
+class FullScreenSwitcherView(QDeclarativeView):
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_F11:
+            self.setWindowState(self.windowState() ^ Qt.WindowFullScreen)
+            event.accept()
+
+        QDeclarativeView.keyPressEvent(self, event)
+
 def main():
     app = QApplication([])
     bug = Bugzilla()
-    view = QDeclarativeView()
+    view = FullScreenSwitcherView()
     view.setResizeMode(QDeclarativeView.SizeRootObjectToView)
     view.rootContext().setContextProperty('bugmodel', bug)
     view.setSource(QUrl.fromLocalFile('bugqml.qml'))

@@ -23,6 +23,10 @@ Column {
         color: Qt.hsla(0.1 * index, 1.0, 0.5, 1.0)
         width: 100
         height: (((canvas.height - txtValue.height - txtSubtitle.height) * dataValue) / canvas._maxValue)
+
+        Behavior on height {
+            NumberAnimation { duration: 1000 }
+        }
     }
 
     Text {

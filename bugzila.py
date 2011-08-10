@@ -60,7 +60,10 @@ class Bugzilla (QAbstractListModel):
             fields = map(lambda (x) : x.replace('""', '"'), fields)
             self._bugs.append(fields)
 
-            for i in (2, 5, 6):
+            statisticsFields = (2, 5, 6)
+            if fields[6] != '---': # just open bugs
+                statisticsFields = (5, 6)
+            for i in statisticsFields:
                 key = fields[i]
                 if key in self._statistics:
                     self._statistics[key] += 1
@@ -123,7 +126,7 @@ def main():
     timer.timeout.connect(bug.update)
     timer.start(1000 * 60 * 10)
 
-    view.show()
+    view.showFullScreen()
     app.exec_()
 
 

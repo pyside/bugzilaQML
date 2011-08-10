@@ -52,7 +52,7 @@ Item {
         }
 
         Timer {
-            interval: 5000; running: true; repeat: true
+            interval: 15000; running: true; repeat: true
             onTriggered: {
                 currentBug++
                 if (currentBug >= bugSummaryList.count)

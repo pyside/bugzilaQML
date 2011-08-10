@@ -43,7 +43,7 @@ class Bugzilla (QAbstractListModel):
     @Slot()
     def update(self):
         url = "http://bugs.pyside.org/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=WAITING&bug_status=ASSIGNED&bug_status=REOPENED&bug_status=RESOLVED&bug_status=VERIFIED&product=PySide&query_format=advanced&resolution=---&resolution=FIXED&ctype=csv"
-        self._timeStamp = QDateTime.currentDateTime().toString("h:m:s ap")
+        self._timeStamp = QDateTime.currentDateTime().toString("h:mm ap")
         self.manager.get(QNetworkRequest(QUrl(url)))
 
     @Slot(QNetworkReply)

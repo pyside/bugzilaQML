@@ -44,6 +44,7 @@ Item {
         Column {
             id: summaryColumn
             width:280
+            spacing: 10
             anchors.right: parent.right
             Text {
                 font.family: fontGiz.name
@@ -59,14 +60,14 @@ Item {
             Text {
                 font.family: fontGiz.name
                 font.pointSize: 14
-                color: "orangered"
-                text: "<b>Unconfirmed Bugs:</b> " + bugmodel.unconfirmedBugs
+                color: "steelblue"
+                text: "<b>Open Bugs:</b> " + bugmodel.openedBugs
             }
             Text {
                 font.family: fontGiz.name
                 font.pointSize: 14
-                color: "steelblue"
-                text: "<b>Openend Bugs:</b> " + bugmodel.openedBugs
+                color: "orangered"
+                text: "<b>Unconfirmed Bugs:</b> " + bugmodel.unconfirmedBugs
             }
             Text {
                 font.family: fontGiz.name

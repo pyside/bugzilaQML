@@ -91,6 +91,11 @@ Item {
 
     }
 
+    RssModel {
+        id: twitterModel
+        phrase: "pyside"
+    }
+
     Footer {
         id: footer
         anchors.top: board.bottom
@@ -98,7 +103,8 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        model: bugmodel
+        //model: bugmodel
+        model: twitterModel.model
     }
 }
 

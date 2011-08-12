@@ -38,6 +38,12 @@ class Bugzilla (QAbstractListModel):
                            self.COMMENTS : 'BUG_COMMENTS'})
         self.update()
 
+    # WORKAROUND
+    @Slot(str, result=str)
+    def parseISODate(self, isoDate):
+        return QDateTime.fromString(isoDate, Qt.ISODate).toString('dd/MM/yyyy hh:mm')
+
+
     @Slot()
     def update(self):
         url = "http://bugs.pyside.org/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=WAITING&bug_status=ASSIGNED&bug_status=REOPENED&bug_status=RESOLVED&bug_status=VERIFIED&product=PySide&query_format=advanced&resolution=---&resolution=FIXED&ctype=csv"

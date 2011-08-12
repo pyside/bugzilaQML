@@ -5,6 +5,8 @@ Column {
     property int dataValue : 0
     property int index : 0
 
+    visible: (dataValue != 0)
+
     anchors.bottom: parent.bottom
 
     Text {

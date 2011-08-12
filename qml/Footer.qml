@@ -32,22 +32,33 @@ Item {
         smooth: true
         Repeater {
             id: bugSummaryList
-            BugSummary {
+            Item {
                 opacity: currentBug == index ? 1.0 : 0
                 anchors.fill: parent
                 anchors.topMargin: 5
                 anchors.bottomMargin: 5
                 anchors.leftMargin: 50
                 anchors.rightMargin: 50
+                TwitterSummary {
+                    imgPhoto: userImage
+                    txtName: name
+                    txtTimestamp: bugmodel.parseISODate(timestamp)
+                    txtSource: source
+                    txtStatus: statusText
+                }
 
-                bugID: BUG_ID
-                bugSummary: BUG_SUMMARY
-                bugStatus: BUG_STATUS
-                bugComponent: BUG_COMPONENT
-                bugAssigned: BUG_ASSIGNEE
-                bugComments: BUG_COMMENTS
+                /*
+                BugSummary {
+                    bugID: BUG_ID
+                    bugSummary: BUG_SUMMARY
+                    bugStatus: BUG_STATUS
+                    bugComponent: BUG_COMPONENT
+                    bugAssigned: BUG_ASSIGNEE
+                    bugComments: BUG_COMMENTS
+                }
+                */
 
-                Behavior on opacity {
+               Behavior on opacity {
                     NumberAnimation { duration: 1000 }
                 }
             }
@@ -57,8 +68,13 @@ Item {
             interval: 15000; running: true; repeat: true
             onTriggered: {
                 currentBug++
-                if (currentBug >= bugSummaryList.count)
+                console.log("COUNT:"+bugSummaryList.count + " CURRENT: " + currentBug)
+                if (currentBug >= bugSummaryList.count) {
+                    if (bugSummaryList.status != XmlListModel.Loading) {
+                        model.reload()
+                    }
                     currentBug = 0
+                }
             }
         }
     }

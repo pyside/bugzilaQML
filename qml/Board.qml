@@ -7,7 +7,7 @@ Item {
 
     FontLoader {
         id: fontGiz
-        source: "./EraserRegular.ttf"
+        source: "./fonts/EraserRegular.ttf"
     }
 
     BorderImage {
@@ -16,7 +16,7 @@ Item {
         anchors.left: parent.left
         border.right: 300
 
-        source: "green_board.jpg"
+        source: "./images/green_board.jpg"
         height: 707
         width: parent.width
         smooth: true

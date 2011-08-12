@@ -1,7 +1,5 @@
-from PySide.QtCore import *
-from PySide.QtGui import *
-from PySide.QtNetwork import *
-from PySide.QtDeclarative import *
+from PySide.QtCore import QAbstractListModel, QDateTime, QUrl, Slot, Signal, Property, Qt
+from PySide.QtNetwork import QNetworkAccessManager, QNetworkReply, QNetworkRequest
 
 class Bugzilla (QAbstractListModel):
 
@@ -120,30 +118,4 @@ class Bugzilla (QAbstractListModel):
             return "Comments ..."
         return None
 
-class FullScreenSwitcherView(QDeclarativeView):
 
-    def keyPressEvent(self, event):
-        if event.key() == Qt.Key_F11:
-            self.setWindowState(self.windowState() ^ Qt.WindowFullScreen)
-            event.accept()
-
-        QDeclarativeView.keyPressEvent(self, event)
-
-def main():
-    app = QApplication([])
-    bug = Bugzilla()
-    view = FullScreenSwitcherView()
-    view.setResizeMode(QDeclarativeView.SizeRootObjectToView)
-    view.rootContext().setContextProperty('bugmodel', bug)
-    view.setSource(QUrl.fromLocalFile('bugqml.qml'))
-
-    timer = QTimer()
-    timer.timeout.connect(bug.update)
-    timer.start(1000 * 60 * 10)
-
-    view.showFullScreen()
-    app.exec_()
-
-
-if __name__ == '__main__':
-    main()

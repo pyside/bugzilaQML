@@ -12,7 +12,7 @@ Item {
         border.left: 35
         border.right: 35
 
-        source: "frame_top.jpg"
+        source: "./images/frame_top.jpg"
         smooth: true
     }
 
@@ -22,10 +22,12 @@ Item {
         anchors.bottom: frameBottom.top
         anchors.left: parent.left
         anchors.right: parent.right
-        border.left: 35
-        border.right: 35
+        border.left: 40
+        border.right: 40
+        horizontalTileMode: BorderImage.Repeat
+        verticalTileMode: BorderImage.Repeat
 
-        source: "footer.jpg"
+        source: "./images/footer.jpg"
         //fillMode: Image.TileVertically
         smooth: true
         Repeater {
@@ -69,7 +71,7 @@ Item {
         border.left: 35
         border.right: 35
 
-        source: "frame_bottom.jpg"
+        source: "./images/frame_bottom.jpg"
         smooth: true
     }
 }

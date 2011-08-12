@@ -3,7 +3,7 @@ import QtQuick 1.0
 Item {
     property alias timestamp: txtTime.text
     Image {
-        source: "stamp.png"
+        source: "./images/stamp.png"
         smooth: true
         Text {
             id: txtTime

@@ -14,7 +14,10 @@ Item {
         id: board
         anchors.top: parent.top
         anchors.left: parent.left
+        border.left: 550
         border.right: 300
+        horizontalTileMode: BorderImage.Repeat
+        verticalTileMode: BorderImage.Repeat
 
         source: "./images/green_board.jpg"
         height: 707

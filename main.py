@@ -13,12 +13,13 @@ class FullScreenSwitcherView(QDeclarativeView):
         QDeclarativeView.keyPressEvent(self, event)
 
 def main():
+    QApplication.setGraphicsSystem('raster')
     app = QApplication([])
     bug = Bugzilla()
     view = FullScreenSwitcherView()
     view.setResizeMode(QDeclarativeView.SizeRootObjectToView)
     view.rootContext().setContextProperty('bugmodel', bug)
-    view.setSource(QUrl.fromLocalFile('./qml/bugqml.qml'))
+    view.setSource(QUrl.fromLocalFile('./qml/Board.qml'))
 
     timer = QTimer()
     timer.timeout.connect(bug.update)

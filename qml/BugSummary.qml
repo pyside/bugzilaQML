@@ -19,7 +19,7 @@ Item {
             Image{
                 id: imgID
                 smooth: true
-                source: "blur.jpg"
+                source: "./images/blur.jpg"
 
                 Text {
                     id: txtID

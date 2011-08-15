@@ -3,6 +3,7 @@ from PySide.QtGui import QApplication
 from PySide.QtDeclarative import QDeclarativeView
 
 from BuglistModel import Bugzilla
+from PieChart import registerComponents
 
 class FullScreenSwitcherView(QDeclarativeView):
     def keyPressEvent(self, event):
@@ -16,6 +17,10 @@ def main():
     QApplication.setGraphicsSystem('raster')
     app = QApplication([])
     bug = Bugzilla()
+
+    # Register PieChart components
+    registerComponents()
+
     view = FullScreenSwitcherView()
     view.setResizeMode(QDeclarativeView.SizeRootObjectToView)
     view.rootContext().setContextProperty('bugmodel', bug)

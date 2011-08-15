@@ -3,7 +3,6 @@ import QtQuick 1.0
 Item {
     id: graph
     property variant dataModel
-    anchors.fill: parent
 
     Item {
         id: data
@@ -56,7 +55,7 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 35
+        anchors.bottomMargin: 37
         height: 2
     }
 

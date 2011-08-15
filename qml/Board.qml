@@ -1,5 +1,7 @@
 import Qt 4.7
 
+import Charts 1.0
+import QtQuick 1.0
 
 Item {
     width: 1214
@@ -12,10 +14,14 @@ Item {
 
     BorderImage {
         id: board
-        anchors.top: parent.top
-        anchors.left: parent.left
         border.left: 550
         border.right: 300
+
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: footer.top
+
         horizontalTileMode: BorderImage.Repeat
         verticalTileMode: BorderImage.Repeat
 
@@ -23,24 +29,64 @@ Item {
         height: 707
         width: parent.width
         smooth: true
-        Column {
-            id: columnGraph
-            Text {
-                id: title
-                anchors.horizontalCenter: graph.horizontalCenter
-                font.family: fontGiz.name
-                font.pointSize: 28
-                color: "white"
-                text: "<b>PySide</b> Bugzilla report"
-            }
 
-            Item {
-                id: graph
-                width: 800
+        Text {
+            id: title
+            anchors.left: parent.left
+            anchors.right: summaryColumn.left
+
+            font.family: fontGiz.name
+            font.pointSize: 28
+            color: "white"
+            horizontalAlignment: Text.AlignHCenter
+
+            text: "<b>PySide</b> Bugzilla report"
+        }
+
+        Item {
+           id: graph
+           anchors.left: parent.left
+           anchors.top: title.bottom
+           anchors.bottom: parent.bottom
+           anchors.right: summaryColumn.left
+
+           /*
+           PieChart {
+                anchors.centerIn: parent
+                width: 600
                 height: 600
-                BarGraph {
-                   dataModel: bugmodel
-                }
+                slices: [
+                    PieSlice {
+                        anchors.fill: parent
+                        value: bugmodel.p1
+                    },
+                    PieSlice {
+                        anchors.fill: parent
+                        value: bugmodel.p2
+                    },
+                    PieSlice {
+                        anchors.fill: parent
+                        value: bugmodel.p3
+                    },
+                    PieSlice {
+                        anchors.fill: parent
+                        value: bugmodel.p4
+                    },
+                    PieSlice {
+                        anchors.fill: parent
+                        value: bugmodel.p5
+                    }
+                ]
+
+            }
+            */
+
+            BarGraph {
+               anchors.centerIn: parent
+               width: 800
+               height: 600
+
+               dataModel: bugmodel
             }
         }
 
@@ -48,7 +94,9 @@ Item {
             id: summaryColumn
             width:280
             spacing: 10
+            anchors.top: parent.top
             anchors.right: parent.right
+            anchors.bottom: parent.bottom
             Text {
                 font.family: fontGiz.name
                 font.pointSize: 24
@@ -98,12 +146,10 @@ Item {
 
     Footer {
         id: footer
-        anchors.top: board.bottom
-        //anchors.top: parent.top
+        height: 300
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        //model: bugmodel
         model: twitterModel.model
     }
 }

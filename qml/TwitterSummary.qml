@@ -21,7 +21,7 @@ Item {
         }
         Text {
             id: title
-            font.family: fontGiz.name
+            font.family: "purisa"
             font.pointSize: 18
             color: "white"
             text: '<style type="text/css">a:link, a:visited {color:white;text-decoration:none}</style>'
@@ -37,7 +37,7 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        font.family: fontGiz.name
+        font.family: "purisa"
         font.pointSize: 18
         color: "white"
         text: '<style type="text/css">a:link, a:visited {color:white;text-decoration:none}</style>' + txtStatus
